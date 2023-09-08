@@ -49,5 +49,27 @@ namespace CalculateurTVA
             double resultat = prix * (1 + TauxTVA / 100);
             richTextBox1.AppendText("Prix TTC : " + resultat + " Prix d'origine : " + prix +$" TVA : {prix - resultat}"+"\n");
         }
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                try {
+                    TauxTVA = int.Parse(textBox2.Text);
+                    label1.Text = $"Taux TVA : {textBox2.Text}%";
+
+                }
+                catch
+                {
+                    MessageBox.Show("Veuillez entrer un taux correct");
+                }
+                    
+            }
+        }
+
+        private void textBox2_Click(object sender, EventArgs e)
+        {
+            textBox2.Text = string.Empty;
+        }
     }
 }
